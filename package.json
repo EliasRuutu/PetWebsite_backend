@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "nodemon app.js",
+    "prestart": "start mongod --dbpath .db"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongod": "^2.0.0",
+    "mongoose": "^8.3.0",
+    "nodemon": "^3.1.0"
+  }
+}
