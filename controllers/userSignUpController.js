@@ -25,14 +25,13 @@ const signup = async function (req, res) {
         newUser.save()
             .then((user) => {
                 console.log('User saved successfully:', user);
+                res.json("Signup success!");
             })
             .catch(error => {
                 console.error('Error saving user:', error);
+                res.json("Signup failed!", error);
             });
-        res.json("Signup success!");
     }
-
-
 }
 
 module.exports = signup;

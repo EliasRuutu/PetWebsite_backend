@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const bodyParser = require('body-parser');
-const router = require('./routes/user');
+const routers = require('./routes/routers');
 const config = require('./config/config');
 const mongoose = require('mongoose');
 
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.use(router);
+app.use(routers);
 
 const connect = async function () {
     try {
