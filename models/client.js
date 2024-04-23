@@ -27,7 +27,7 @@ const personSchema = new mongoose.Schema({
     },
     avatarName: {
         type: String,
-    }
+    },
     salt: String // This is not typically necessary because bcrypt stores the salt with the hash
 })
 

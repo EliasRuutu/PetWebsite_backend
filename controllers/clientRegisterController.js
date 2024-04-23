@@ -6,6 +6,10 @@ const checkExistingClient = async function (Profile_ID) {
 } 
 
 const registerClient = async function(req, res) {
+
+    const avatarName = req.file.filename;
+    console.log("🌿🌿🌿", avatarName);
+    
     const { Profile_ID, PersonalInfo } = req.body;
 
     const isAlreadyRegistered = await checkExistingClient(Profile_ID)
