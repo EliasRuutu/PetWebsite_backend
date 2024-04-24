@@ -31,39 +31,34 @@ const bcrypt = require('bcrypt');
 //     salt: String // This is not typically necessary because bcrypt stores the salt with the hash
 // })
 
-const clientSchema = new mongoose.Schema({
-    Profile_ID : {
-        type: String,
-        required: true,
-        unique: true
-    },
+const petSchema = new mongoose.Schema({
+
     name: {
         type: String,
         // required: true
     },
-    lastName: {
+    gender: {
         type: String,
         // required: true
     },
-    email: {
+    birthday: {
         type: String,
         // required: true
     },
-    phone: {
+    microchip: {
         type: String,
         // required: true
     },
-    password: {
+    speciaDCondition: {
         type: String,
         // required: true
     },
-    address: {
+    petAvatar: {
         type: String,
     },
-    avatarName: {
+    path: {
         type: String,
     },
-    salt: String
 });
 
 // clientSchema.pre('save', async function(next) {
@@ -78,6 +73,6 @@ const clientSchema = new mongoose.Schema({
 //     next();
 // });
 
-const Client = mongoose.model('Client', clientSchema);
+const Pet = mongoose.model('Pet', petSchema);
 
-module.exports = Client;
+module.exports = Pet;
