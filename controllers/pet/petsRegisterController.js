@@ -1,6 +1,4 @@
 const Pet = require("../../models/Pet");
-const bcrypt = require("bcrypt");
-
 // const checkExistingClient = async function (Profile_ID) {
 //   return await Client.findOne({ Profile_ID });
 // };
@@ -17,11 +15,12 @@ const registerPet = async function (req, res) {
   } else {
     console.log(req.body)
     const newpet = new Pet({
+      Profile_ID: req.body.Profile_ID,
       name: req.body.name,
       gender: req.body.gender,
       birthday: req.body.birthday,
       microchip: req.body.microchip,
-      speciaDCondition: req.body.speciaDCondition,
+      specialDCondition: req.body.specialDCondition,
       petAvatar: req.file.filename,
       path: req.file.path
     });

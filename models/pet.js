@@ -32,6 +32,10 @@ const bcrypt = require('bcrypt');
 // })
 
 const petSchema = new mongoose.Schema({
+    Profile_ID: {
+        type: String,
+        required: true
+    },
 
     name: {
         type: String,
@@ -49,7 +53,7 @@ const petSchema = new mongoose.Schema({
         type: String,
         // required: true
     },
-    speciaDCondition: {
+    specialDCondition: {
         type: String,
         // required: true
     },
