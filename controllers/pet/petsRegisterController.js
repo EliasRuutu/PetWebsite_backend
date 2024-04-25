@@ -21,6 +21,7 @@ const registerPet = async function (req, res) {
       birthday: req.body.birthday,
       microchip: req.body.microchip,
       specialDCondition: req.body.specialDCondition,
+      idTag: req.body.idTag,
       petAvatar: req.file.filename,
       path: req.file.path
     });
