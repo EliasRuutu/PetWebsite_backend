@@ -60,6 +60,9 @@ const petSchema = new mongoose.Schema({
     petAvatar: {
         type: String,
     },
+    idTag: {
+        type: String,
+    },
     path: {
         type: String,
     },
