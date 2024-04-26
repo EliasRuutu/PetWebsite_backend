@@ -1,5 +1,9 @@
 const express = require('express');
 const multer = require('multer');
+
+const addAssign = require("../controllers/Assign/addController")
+const getAllTags = require("../controllers/Assign/getAllTags")
+
 const userSignUp = require('../controllers/admin/userSignUpController');
 const userSignIn = require("../controllers/admin/userSignInController");
 const registerClient = require("../controllers/client/clientRegisterController");
@@ -34,6 +38,9 @@ const petStorage = multer.diskStorage({
 });
 
 const uploadPetAvatar = multer({ storage: petStorage });
+
+router.post("/add_tagid", addAssign);
+router.get("/getAllIdTags", getAllTags)
 
 router.post("/signup", userSignUp);
 router.post("/signin", userSignIn);
