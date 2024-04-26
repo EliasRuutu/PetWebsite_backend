@@ -11,7 +11,7 @@ const router = express.Router();
 
 const clientStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'images/clients');
+        cb(null, '../frontend/public/assets/images/clients');
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now()+Math.round(Math.random()*1E9);
@@ -24,7 +24,7 @@ const uploadClientAvatar = multer({ storage: clientStorage });
 
 const petStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'images/pets');
+        cb(null, '../frontend/public/assets/images/pets');
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now()+Math.round(Math.random()*1E9);
