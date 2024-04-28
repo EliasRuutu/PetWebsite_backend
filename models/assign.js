@@ -11,6 +11,11 @@ const assignSchema = new mongoose.Schema({
 
     Assigned_Pet: {
         type: String
+    },
+
+    IsAssigned: {
+        type: Boolean,
+        default: false
     }
 })
 
