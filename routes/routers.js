@@ -8,6 +8,7 @@ const updateAssign = require("../controllers/Assign/updateController")
 const userSignUp = require('../controllers/admin/userSignUpController');
 const userSignIn = require("../controllers/admin/userSignInController");
 const registerClient = require("../controllers/client/clientRegisterController");
+const deleteClient = require("../controllers/client/deleteController");
 const getAllClients = require("../controllers/client/getClientController");
 const registerPet = require("../controllers/pet/petsRegisterController");
 const getAllPets = require("../controllers/pet/getAllPetsController")
@@ -47,6 +48,7 @@ router.put("/assign/", updateAssign)
 router.post("/signup", userSignUp);
 router.post("/signin", userSignIn);
 router.post("/register", uploadClientAvatar.single('avatar'), registerClient);
+router.delete("/deleteclient/:id", deleteClient);
 router.get("/getAllClientInfos", getAllClients);
 
 router.post("/pet", uploadPetAvatar.single('petAvatar'), registerPet)
