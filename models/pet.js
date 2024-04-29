@@ -66,6 +66,10 @@ const petSchema = new mongoose.Schema({
     path: {
         type: String,
     },
+    isAssigned: {
+        type: String,
+        default: true
+    }
 });
 
 // clientSchema.pre('save', async function(next) {
