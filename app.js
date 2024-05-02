@@ -29,9 +29,9 @@ const connect = async function () {
 }
 
 connect();
-app.listen(config.PORT, config.SERVERIP, async (error) => {
+app.listen(config.PORT, async (error) => {
     if (!error) {
-        console.log("server is running"+config.SERVERIP + config.PORT)
+        console.log("server is running"+ config.PORT)
 
     }
     else
