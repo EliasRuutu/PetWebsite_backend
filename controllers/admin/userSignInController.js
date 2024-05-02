@@ -3,18 +3,25 @@ const bcrypt = require('bcrypt');
 
 const signin = async function (req, res) {
     const { signInEmail, signInPassword } = req.body;
-    const signnedUser = await User.findOne({ email: signInEmail });
-    const hashedSignInPassword = await bcrypt.hashSync(signInPassword, signnedUser.salt);
-    console.log("===================", signnedUser);
-    console.log("-------------------", hashedSignInPassword);
-    if (signnedUser && (signnedUser.password === hashedSignInPassword)) {
-        console.log("Success:", signInEmail);
-        res.json("Succss");
-    }
-    else {
-        console.log("User doesn't exist:", signnedUser);
-        res.json("User doesn't exist:");
-    }
+    const signedUser = await User.findOne({ email: signInEmail });
+    try {
+        if(signedUser) {
+            const isMatch = await bcrypt.compare(signInPassword, signedUser.password);
+            if (isMatch) {
+                console.log("login success")
+                res.status(200).json("Login Succss");
+            } else {
+                console.log("password error")
+                res.status(403).json("Password Error");
+            }
+        } else {
+            console.log("user not found error");
+            res.status(404).json("Password Error");
+        }     
+    } catch(error) {
+        console.log(error)
+        res.status(500).json({ message: err.message });
+    };
 }
 
 module.exports = signin;

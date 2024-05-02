@@ -30,11 +30,11 @@ const registerPet = async function (req, res) {
       .save()
       .then((pet) => {
         console.log("Registered client successfully: client =>", newpet);
-        res.json(newpet);
+        res.status(200).json(newpet);
       })
       .catch((error) => {
         console.error("Register Error : ", error);
-        res.json("Register failed!");
+        res.status(500).json("Register failed!");
       });
   }
 };
