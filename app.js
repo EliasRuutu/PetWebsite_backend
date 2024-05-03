@@ -38,6 +38,4 @@ app.listen(config.PORT, async (error) => {
         console.log("Error occured", error);
 })
 
-
-
 http.createServer(app);
