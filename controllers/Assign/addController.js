@@ -3,8 +3,11 @@ const Assign = require("../../models/assign");
 const addAssign = async function (req, res) {
   try {
     console.log("🌿🌿🌿", req.body.Tag_ID);
+    console.log("🌿🌿🌿", req.body.Tag_NO);
+
     const newAssign = new Assign({
       Tag_ID: req.body.Tag_ID,
+      Tag_NO: req.body.Tag_NO
     });
 
     newAssign

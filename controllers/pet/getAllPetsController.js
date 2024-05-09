@@ -1,4 +1,4 @@
-const Pet = require("../../models/Pet");
+const Pet = require("../../models/pet");
 const bcrypt = require("bcrypt");
 
 const getAllPets = async function (req, res) {

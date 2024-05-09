@@ -1,4 +1,4 @@
-const Pet = require("../../models/Pet");
+const Pet = require("../../models/pet");
 // const checkExistingClient = async function (Profile_ID) {
 //   return await Client.findOne({ Profile_ID });
 // };

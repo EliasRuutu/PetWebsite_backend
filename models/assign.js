@@ -5,6 +5,10 @@ const assignSchema = new mongoose.Schema({
         type: String,
     },
 
+    Tag_NO: {
+        type: Number,
+    },
+    
     Assigned_Client: {
         type: String,
     },
