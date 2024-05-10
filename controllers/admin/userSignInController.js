@@ -16,7 +16,7 @@ const signin = async function (req, res) {
             }
         } else {
             console.log("user not found error");
-            res.status(404).json("Password Error");
+            res.status(404).json("User not found");
         }     
     } catch(error) {
         console.log(error)

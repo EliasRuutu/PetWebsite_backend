@@ -12,12 +12,12 @@ const registerClient = async function (req, res) {
 
   const Profile_ID = uuid.v5(JSON.stringify(req.body.email), uuid.v5.URL);
 
-  //   const isAlreadyRegistered = await checkExistingClient(Profile_ID)
-  const isAlreadyRegistered = false;
+  const isAlreadyRegistered = await checkExistingClient(Profile_ID)
+  // const isAlreadyRegistered = false;
 
   if (isAlreadyRegistered) {
     console.log("Client already exists:", isAlreadyRegistered);
-    res.json("Client already exist");
+    res.status(404).json({ message: "Client already exist" });
   } else {
     const newClient = new Client({
       Profile_ID: Profile_ID,
@@ -34,11 +34,11 @@ const registerClient = async function (req, res) {
       .save()
       .then((user) => {
         console.log("Registered client successfully: client =>", newClient);
-        res.json(user);
+        res.status(200).json(user);
       })
       .catch((error) => {
         console.error("Regisger Error : ", error);
-        res.json("Register failed!");
+        res.status(500).json("Register failed!");
       });
   }
 };

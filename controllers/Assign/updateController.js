@@ -2,7 +2,8 @@ const Assign = require("../../models/assign");
 
 const updateAssign = async function (req, res) {
   try {
-      const {Tag_ID, Assigned_Client, Assigned_Pet} = req.body;
+    const {Tag_ID, Assigned_Client, Assigned_Pet} = req.body;
+    console.log("👧🧑👨", Tag_ID, "+++", Assigned_Client, "+++", Assigned_Pet)
       const updatedAssignTag = await Assign.findOneAndUpdate({Tag_ID: Tag_ID},{Assigned_Client: Assigned_Client, Assigned_Pet: Assigned_Pet, IsAssigned: true}, { new: true })
       console.log("updatedAssignTag", updatedAssignTag)
       if (!updatedAssignTag){
