@@ -1,6 +1,7 @@
 const Client = require("../../models/client");
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
+const Pet = require("../../models/pet");
 
 const checkExistingClient = async function (Profile_ID) {
   return await Client.findOne({ Profile_ID });
@@ -13,10 +14,9 @@ const registerClient = async function (req, res) {
   const Profile_ID = uuid.v5(JSON.stringify(req.body.email), uuid.v5.URL);
 
   const isAlreadyRegistered = await checkExistingClient(Profile_ID)
-  // const isAlreadyRegistered = false;
 
   if (isAlreadyRegistered) {
-    console.log("Client already exists:", isAlreadyRegistered);
+    console.log("Client already exists:");
     res.status(404).json({ message: "Client already exist" });
   } else {
     const newClient = new Client({

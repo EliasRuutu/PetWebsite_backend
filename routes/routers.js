@@ -13,6 +13,7 @@ const deletePet = require("../controllers/pet/deletePetController")
 const getAllClients = require("../controllers/client/getClientController");
 const registerPet = require("../controllers/pet/petsRegisterController");
 const getAllPets = require("../controllers/pet/getAllPetsController")
+const getPet = require("../controllers/pet/getPetController")
 
 const router = express.Router();
 
@@ -55,6 +56,7 @@ router.get("/getAllClientInfos", getAllClients);
 
 router.post("/pet", uploadPetAvatar.single('petAvatar'), registerPet)
 router.get("/getallpets", getAllPets)
+router.get("/getPetByTag/:idTag", getPet)
 
 
 module.exports = router;
