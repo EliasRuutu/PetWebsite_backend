@@ -2,7 +2,6 @@ const Pet = require("../../models/pet");
 
 const getAllPets = async function (req, res) {
   try {
-      console.log("✅🌿✅")
       const pets = await Pet.find();
       res.status(200).json(pets);
   } catch (err) {
