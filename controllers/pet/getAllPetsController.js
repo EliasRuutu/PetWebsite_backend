@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 
 const getAllPets = async function (req, res) {
   try {
-      console.log("✅🌿✅")
       const pets = await Pet.find();
       res.status(200).json(pets);
   } catch (err) {
