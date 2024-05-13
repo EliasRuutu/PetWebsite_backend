@@ -10,7 +10,8 @@ const userSignIn = require("../controllers/admin/userSignInController");
 const registerClient = require("../controllers/client/clientRegisterController");
 const deleteController = require("../controllers/client/deleteController");
 const deletePet = require("../controllers/pet/deletePetController")
-const getAllClients = require("../controllers/client/getClientController");
+const getAllClients = require("../controllers/client/getAllClientsController");
+const getClient = require("../controllers/client/getClientController");
 const registerPet = require("../controllers/pet/petsRegisterController");
 const getAllPets = require("../controllers/pet/getAllPetsController")
 const getPet = require("../controllers/pet/getPetController")
@@ -53,6 +54,7 @@ router.post("/register", uploadClientAvatar.single('avatar'), registerClient);
 router.delete("/deleteclient/:id", deleteController);
 router.delete("/deletepet/:id", deletePet);
 router.get("/getAllClientInfos", getAllClients);
+router.get("/getClientByProfileID/:profileID", getClient);
 
 router.post("/pet", uploadPetAvatar.single('petAvatar'), registerPet)
 router.get("/getallpets", getAllPets)

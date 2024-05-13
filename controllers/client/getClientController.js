@@ -1,13 +1,14 @@
 const Client = require("../../models/client");
 
-const getAllClients = async function (req, res) {
+const getClient = async function (req, res) {
     try {
-        console.log("✅🌿✅")
-        const clients = await Client.find();
-        res.status(200).json(clients);
+        const profileID = req.params.profileID;
+        const client = await Client.findOne({Profile_ID : profileID});
+        console.log("✅👧✅", client)
+        res.status(200).json(client);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
 
-module.exports = getAllClients
+module.exports = getClient

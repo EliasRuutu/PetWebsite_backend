@@ -16,8 +16,29 @@ const registerClient = async function (req, res) {
   const isAlreadyRegistered = await checkExistingClient(Profile_ID)
 
   if (isAlreadyRegistered) {
-    console.log("Client already exists:");
-    res.status(404).json({ message: "Client already exist" });
+
+    if(req.body.clientID === "") {
+      res.status(404).json("User already exists");
+      return 0;
+    }
+
+    const updatedClientFields = {
+      name: req.body.name,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+      password: req.body.password,
+      avatarName: req.file.filename,
+      address: req.body.address,
+    }
+
+    Client.findOneAndUpdate({Profile_ID: req.body.clientID}, updatedClientFields, { new : true })
+    .then((result) => {
+      res.status(202).json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Network error" });
+    })
   } else {
     const newClient = new Client({
       Profile_ID: Profile_ID,
