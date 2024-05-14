@@ -3,6 +3,7 @@ const multer = require('multer');
 
 const addAssign = require("../controllers/Assign/addController")
 const getAllTags = require("../controllers/Assign/getAllTags")
+const getTagByClientID = require("../controllers/Assign/getTagByClientID")
 const updateAssign = require("../controllers/Assign/updateController")
 
 const userSignUp = require('../controllers/admin/userSignUpController');
@@ -46,13 +47,14 @@ const uploadPetAvatar = multer({ storage: petStorage });
 
 router.post("/add_tagid", addAssign);
 router.get("/getAllIdTags", getAllTags)
+router.get("/getTag/:clientID/:idTag", getTagByClientID)
 router.put("/assign/", updateAssign)
 
 router.post("/signup", userSignUp);
 router.post("/signin", userSignIn);
 router.post("/register", uploadClientAvatar.single('avatar'), registerClient);
 router.delete("/deleteclient/:id", deleteController);
-router.delete("/deletepet/:id", deletePet);
+router.delete("/deletepet/:id/:idTag", deletePet);
 router.get("/getAllClientInfos", getAllClients);
 router.get("/getClientByProfileID/:profileID", getClient);
 

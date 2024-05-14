@@ -7,7 +7,7 @@ const deleteController = async function (req, res) {
   try {
     Client.findOneAndDelete({ Profile_ID: deleteID })
       .catch((err) => {
-        return res.status(404).json({ message: "Data not found" });console.log(err)
+        return res.status(404).json({ message: "Data not found" });
       });
     
     const petToDelete = await Pet.findOne({ Profile_ID: deleteID });
@@ -18,7 +18,7 @@ const deleteController = async function (req, res) {
     }
 
     const updateAssignFields =  {Assigned_Client: null, Assigned_Pet: null, IsAssigned: false}
-    const  updatedAssignTags = await Assign.updateMany({Assigned_Client:deleteID}, updateAssignFields, { new: true })
+    await Assign.updateMany({Assigned_Client:deleteID}, updateAssignFields, { new: true })
     .catch((error) => {
       return res.status(404).json({ message: "Data not found" });
     });
