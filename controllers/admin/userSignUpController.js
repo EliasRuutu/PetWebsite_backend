@@ -13,8 +13,7 @@ const signup = async function (req, res) {
     const existingUser = await checkExistingUser(email);
 
     if (existingUser) {
-        console.log('User already exists:', existingUser);
-        res.json("User already exist");
+        res.status(409).json(existingUser);
     } else {
         const newUser = new User({
             email: email,

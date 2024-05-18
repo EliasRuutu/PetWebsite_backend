@@ -3,8 +3,9 @@ const bcrypt = require('bcrypt');
 
 const signin = async function (req, res) {
     const { signInEmail, signInPassword } = req.body;
-    const signedUser = await User.findOne({ email: signInEmail });
     try {
+        const signedUser = await User.findOne({ email: signInEmail });
+        console.log(" signedUser ",signedUser)
         if(signedUser) {
             const isMatch = await bcrypt.compare(signInPassword, signedUser.password);
             if (isMatch) {
@@ -20,7 +21,7 @@ const signin = async function (req, res) {
         }     
     } catch(error) {
         console.log(error)
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: error.message });
     };
 }
 
